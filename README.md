@@ -1,5 +1,8 @@
-<<<<<<< HEAD
-#  JobAutoPilot
+
+=======
+# JobMate
+# 💼 JobAutoPilot
+>>>>>>> 62a846bd240e7a3f90915e8bcf9ae6d92fd67a7a
 
 **AI-powered Resume Autofill and Job Application Bot built with GPT-4, Python, Java, and Selenium.**
 
@@ -15,10 +18,37 @@
 
 >  Result: Saves 80–90% of the time typically spent on filling repetitive job forms while improving quality and personalization.
 
-
+ 
 ---
 
 ##  Features
+=======
+---
+
+##  Architecture
+[Resume Input]
+      │
+      ▼
+python/automation.py
+- Calls OpenAI API
+- Generates gpt_output.json (structured autofill data)
+
+      │
+      ▼
+java/GPTFieldFiller.java
+- Parses gpt_output.json
+- Populates FormData model
+
+      │
+      ▼
+java/Bot.java
+- Uses Selenium to autofill job application forms
+
+
+
+---
+
+## ⚙️ Features
 
 | Feature                        | Description                                                                 |
 |-------------------------------|-----------------------------------------------------------------------------|
@@ -59,6 +89,3 @@
 ---
 
 
-=======
-# JobAutoPilot
->>>>>>> 27f46e36bd1776d8281b81282d697b4b1da69a0a
