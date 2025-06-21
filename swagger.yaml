@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: JobAutoPilot - AI Resume Autofill & Job Application API
+  version: 1.0.0
+  description: |
+    JobAutoPilot is a multi-language automation system that uses GPT (via Python) to enrich resume data,
+    and Java to automate job applications on job portals like Naukri.com.
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server for Python GPT generator
+
+paths:
+  /generate-autofill:
+    post:
+      summary: Generate GPT-based job application data
+      tags:
+        - Autofill Generator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResumeInput'
+      responses:
+        '200':
+          description: Autofill content generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutofillResponse'
+        '400':
+          description: Invalid resume or missing fields
+        '500':
+          description: GPT generation error
+
+  /status:
+    get:
+      summary: Health check endpoint
+      tags:
+        - System
+      responses:
+        '200':
+          description: System is running
+
+components:
+  schemas:
+    ResumeInput:
+      type: object
+      required:
+        - name
+        - email
+        - resume_text
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        resume_text:
+          type: string
+        preferred_roles:
+          type: array
+          items:
+            type: string
+        target_companies:
+          type: array
+          items:
+            type: string
+
+    AutofillResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        aboutYou:
+          type: string
+        preferredRole:
+          type: string
+        resumePath:
+          type: string
+        companies:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              whyThisCompany:
+                type: string
