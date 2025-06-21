@@ -1,8 +1,6 @@
 
 =======
 # JobMate
-# 💼 JobAutoPilot
->>>>>>> 62a846bd240e7a3f90915e8bcf9ae6d92fd67a7a
 
 **AI-powered Resume Autofill and Job Application Bot built with GPT-4, Python, Java, and Selenium.**
 
